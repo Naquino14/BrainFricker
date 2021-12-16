@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BrainFricker": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\CSharp Projects\\BrainFricker\\BrainFricker\\BrainFricker\\test.bf\""
+    }
+  }
+}

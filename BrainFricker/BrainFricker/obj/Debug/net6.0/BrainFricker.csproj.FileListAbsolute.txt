@@ -1,0 +1,15 @@
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\BrainFricker.exe
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\BrainFricker.deps.json
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\BrainFricker.runtimeconfig.json
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\BrainFricker.dll
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\ref\BrainFricker.dll
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\bin\Debug\net6.0\BrainFricker.pdb
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.csproj.AssemblyReference.cache
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.GeneratedMSBuildEditorConfig.editorconfig
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.AssemblyInfoInputs.cache
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.AssemblyInfo.cs
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.csproj.CoreCompileInputs.cache
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.dll
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\ref\BrainFricker.dll
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.pdb
+C:\CSharp Projects\BrainFricker\BrainFricker\BrainFricker\obj\Debug\net6.0\BrainFricker.genruntimeconfig.cache

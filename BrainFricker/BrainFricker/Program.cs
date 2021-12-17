@@ -35,26 +35,26 @@
 
             List<int> startLoop = new List<int>(), endLoop = new List<int>();
 
-            for (var codePos = 0; codePos < code.Length; codePos++) // TODO: handle underflow and overflow
-            {
+            for (var codePos = 0; codePos < code.Length; codePos++) // TODO: handle underflow and overflow, as well as unpaired brackets
+            { // also TODO: optimize?
                 var c = code[codePos];
-                if (c == 0x3e)
+                if (c == 0x3e) // next
                     tapePos++;
-                else if (c == 0x3c)
+                else if (c == 0x3c) // previous
                     tapePos--;
-                else if (c == 0x2b)
+                else if (c == 0x2b) // incriment
                     tape[tapePos]++;
-                else if (c == 0x2d)
+                else if (c == 0x2d) // decriment
                     tape[tapePos]--;
-                else if (c == 0x2e)
+                else if (c == 0x2e) // push to output
                     output.Add(tape[tapePos]);
-                else if (c == 0x2c)
+                else if (c == 0x2c) // read from args
                     try { tape[tapePos] = (byte)args[argPos]; }
                     catch (IndexOutOfRangeException u) { tape[tapePos] = 0x00; }
                     finally { argPos++; }
-                else if (c == 0x5b)
+                else if (c == 0x5b) // start loop
                     startLoop.Add(codePos);
-                else if (c == 0x5d)
+                else if (c == 0x5d) // end loop
                     if (tape[tapePos] != 0x00)
                         codePos = startLoop.Last();
                     else

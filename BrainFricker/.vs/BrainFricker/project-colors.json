@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "59911fc2-5f3f-4048-b0da-0b3520ddbcf5": {
+      "ProjectGuid": "59911fc2-5f3f-4048-b0da-0b3520ddbcf5",
+      "DisplayName": "BrainFricker",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

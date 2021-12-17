@@ -1,27 +1,14 @@
-﻿using System;
-using System.Text;
-
-namespace BrainFricker
+﻿namespace BrainFricker
 {
     public class Program
     {
-        static readonly byte 
-            nxt = 0x3e,
-            prv = 0x3c,
-            inc = 0x2b,
-            din = 0x2d,
-            oup = 0x2e,
-            inp = 0x2c,
-            swh = 0x5b,
-            ewh = 0x5d;
         public static void Main(string[] args)
         {
             if (args != null)
                 using (FileStream fs = new FileStream(args[0], FileMode.Open))
                     if (fs.Name.Contains(".bf"))
                     {
-                        // This - 3 exists because the first 3 bytes of the txt file are padding, 239, 187, 191.
-                        var buf = new byte[new FileInfo(fs.Name).Length-3];
+                        var buf = new byte[new FileInfo(fs.Name).Length - 3]; // This - 3 exists because the first 3 bytes of the txt file are padding, 239, 187, 191.
                         fs.Position = 3;
                         fs.Read(buf, 0, buf.Length);
                         Console.WriteLine("Input args:");
@@ -46,75 +33,38 @@ namespace BrainFricker
             else
                 args = string.Empty;
 
-            // Start and end position of a while loop in the tape
-            //int startLoop = 0, endLoop = 0;
-
-            // Allows for multiple while loops inside itself
-            // How it works:
-            // index 0 is first loop
-            // index 1 is a loop inside the first loop
-            // index 2 is a loop inside the second loop
-            // and so on and so fourth
-
             List<int> startLoop = new List<int>(), endLoop = new List<int>();
 
-            for (var codePos = 0; codePos < code.Length; codePos++) // interpret script
+            for (var codePos = 0; codePos < code.Length; codePos++) // TODO: handle underflow and overflow
             {
-                // parse byte
-                byte c = code[codePos];
-                if (c == nxt)
+                var c = code[codePos];
+                if (c == 0x3e)
                     tapePos++;
-                else if (c == prv)
+                else if (c == 0x3c)
                     tapePos--;
-                else if (c == inc)
+                else if (c == 0x2b)
                     tape[tapePos]++;
-                else if (c == din)
+                else if (c == 0x2d)
                     tape[tapePos]--;
-                else if (c == oup)
+                else if (c == 0x2e)
                     output.Add(tape[tapePos]);
-                else if (c == inp)
-                {
-                    try
-                    {
-                        tape[tapePos] = (byte)args[argPos];
-                    }
-                    catch (IndexOutOfRangeException e)
-                    {
-                        tape[tapePos] = 0x00;
-                    }
-                    finally
-                    {
-                        argPos++;
-                    }
-                }
-                else if (c == swh)
-                {
-                    startLoop.Add(codePos); // add position of the [ character
-                }
-                else if (c == ewh)
-                {
-                    
+                else if (c == 0x2c)
+                    try { tape[tapePos] = (byte)args[argPos]; }
+                    catch (IndexOutOfRangeException u) { tape[tapePos] = 0x00; }
+                    finally { argPos++; }
+                else if (c == 0x5b)
+                    startLoop.Add(codePos);
+                else if (c == 0x5d)
                     if (tape[tapePos] != 0x00)
-                    {
                         codePos = startLoop.Last();
-                    }
                     else
-                    {
-                        // Exit the while loop
-                        // Remove it from the count
                         startLoop.RemoveAt(startLoop.Count - 1);
-                    }
-                }
-                // if there's a character that isn't supposed to be there, just skip it
             }
 
-            String ret = "";
-
+            var ret = "";
             for(int i = 0; i < output.Count; i++)
-            {
                 ret += (char)output[i];
-            }
-            return ret; // output array to string
+            return ret;
         }
     }
 }

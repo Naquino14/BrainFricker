@@ -1,4 +1,5 @@
-﻿namespace BrainFricker
+﻿using c = System.Console;
+namespace BrainFricker
 {
     public class Program
     {
@@ -18,7 +19,6 @@
                         throw new InvalidDataException();
             else
                 throw new ArgumentNullException();
-
         }
 
         static string Interpret(byte[] code, string? args_)
@@ -38,10 +38,18 @@
             for (var codePos = 0; codePos < code.Length; codePos++) // TODO: handle underflow and overflow, as well as unpaired brackets
             { // also TODO: optimize?
                 var c = code[codePos];
-                if (c == 0x3e) // next
+                if (c == 0x3e)
+                {  // next
                     tapePos++;
-                else if (c == 0x3c) // previous
+                    if (tapePos > tape.Length - 1)
+                        tapePos = 0;
+                }
+                else if (c == 0x3c)
+                {  // previous
                     tapePos--;
+                    if (tapePos < 0)
+                        tapePos = tape.Length - 1;
+                }
                 else if (c == 0x2b) // incriment
                     tape[tapePos]++;
                 else if (c == 0x2d) // decriment
@@ -59,11 +67,13 @@
                         codePos = startLoop.Last();
                     else
                         startLoop.RemoveAt(startLoop.Count - 1);
+                Console.Write($"{codePos}\r");
             }
-
+            Console.Clear();
             var ret = "";
             for(int i = 0; i < output.Count; i++)
                 ret += (char)output[i];
+            ;
             return ret;
         }
     }
